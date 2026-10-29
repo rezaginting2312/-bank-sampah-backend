@@ -2,6 +2,9 @@
 
 REST API untuk mengelola data jenis sampah pada sistem Bank Sampah menggunakan Node.js, Express.js, dan PostgreSQL.
 
+# Deskripsi Proyek
+Bank Sampah Backend API adalah layanan REST API yang dikembangkan menggunakan Node.js, Express.js, dan PostgreSQL untuk mengelola data jenis sampah. Proyek ini menyediakan fitur melihat, mencari, menambahkan, memperbarui, dan menghapus data jenis sampah beserta deskripsi dan harga per kilogramnya.
+
 ## Teknologi yang Digunakan
 
 - Node.js
