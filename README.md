@@ -1,6 +1,6 @@
 # Bank Sampah Backend API
 
-REST API untuk mengelola data jenis sampah pada sistem Bank Sampah. Proyek ini dibuat menggunakan **Node.js, Express.js, dan PostgreSQL**.
+REST API untuk mengelola data jenis sampah pada sistem Bank Sampah menggunakan Node.js, Express.js, dan PostgreSQL.
 
 ## Teknologi yang Digunakan
 
@@ -9,20 +9,18 @@ REST API untuk mengelola data jenis sampah pada sistem Bank Sampah. Proyek ini d
 - PostgreSQL
 - pg (node-postgres)
 - dotenv
-- Postman untuk pengujian API
+- Postman
 
 ## Fitur API
-
-API menyediakan enam endpoint untuk mengelola data jenis sampah:
 
 | Method | Endpoint | Fungsi |
 |---|---|---|
 | GET | `/api/jenis-sampah` | Menampilkan semua jenis sampah |
 | GET | `/api/jenis-sampah/:id` | Menampilkan jenis sampah berdasarkan ID |
 | GET | `/api/jenis-sampah/nama/:nama` | Mencari jenis sampah berdasarkan nama |
-| POST | `/api/jenis-sampah` | Menambahkan jenis sampah baru |
-| PUT | `/api/jenis-sampah/:id` | Memperbarui data jenis sampah |
-| DELETE | `/api/jenis-sampah/:id` | Menghapus data jenis sampah |
+| POST | `/api/jenis-sampah` | Menambahkan jenis sampah |
+| PUT | `/api/jenis-sampah/:id` | Memperbarui jenis sampah |
+| DELETE | `/api/jenis-sampah/:id` | Menghapus jenis sampah |
 
 ## Struktur Proyek
 
@@ -32,22 +30,19 @@ bank-sampah-backend/
 │   └── db.js
 ├── routes/
 │   └── jenisSampah.js
-├── .env
-├── .gitignore
 ├── database.sql
+├── server.js
 ├── package.json
 ├── package-lock.json
-├── README.md
-└── server.js
-```
+├── .gitignore
 
-File `.env` dan folder `node_modules` tidak disertakan dalam repository publik.
+```
 
 ## Persiapan dan Instalasi
 
 ### 1. Persyaratan
 
-Pastikan Node.js, npm, dan PostgreSQL sudah terpasang di komputer.
+Pastikan Node.js, npm, dan PostgreSQL sudah terpasang.
 
 ### 2. Clone Repository
 
@@ -64,15 +59,15 @@ Ganti `URL_REPOSITORY_KAMU` dengan URL repository GitHub proyek ini.
 npm install
 ```
 
-### 4. Buat Database
+### 4. Siapkan Database
 
-Buat database PostgreSQL bernama `bank_sampah`, lalu jalankan isi file `database.sql` pada database tersebut.
+Buat database PostgreSQL bernama `bank_sampah`, lalu jalankan perintah SQL dari file `database.sql`.
 
 Jika tabel `jenis_sampah` sudah tersedia, jangan menjalankan ulang perintah pembuatan tabel yang sama.
 
 ### 5. Konfigurasi Environment
 
-Buat file `.env` di folder utama proyek dan sesuaikan nilainya dengan konfigurasi PostgreSQL lokal.
+Buat file `.env` di folder utama proyek dan sesuaikan dengan konfigurasi PostgreSQL lokal.
 
 ```env
 DB_HOST=localhost
@@ -83,7 +78,7 @@ DB_PASSWORD=password_postgresql_kamu
 PORT=3000
 ```
 
-Ganti `password_postgresql_kamu` dengan kata sandi PostgreSQL milikmu. Jangan mengunggah file `.env` ke GitHub.
+Ganti `password_postgresql_kamu` dengan kata sandi PostgreSQL milikmu.
 
 ### 6. Jalankan Server
 
@@ -91,64 +86,62 @@ Ganti `password_postgresql_kamu` dengan kata sandi PostgreSQL milikmu. Jangan me
 node server.js
 ```
 
-Jika berhasil, server berjalan di:
+Jika berhasil, server dapat diakses melalui:
 
 `http://localhost:3000`
 
-Endpoint utama API:
+Endpoint utama:
 
 `http://localhost:3000/api/jenis-sampah`
 
-## Contoh Request
+## Pengujian API dengan Postman
 
-### Menambahkan Jenis Sampah
+Pengujian dilakukan menggunakan Postman untuk memastikan keenam endpoint berjalan sesuai fungsinya.
 
-**Method:** `POST`
+### 1. GET Semua Jenis Sampah
 
-**URL:** `/api/jenis-sampah`
+Menampilkan seluruh data jenis sampah.
 
-**Body (JSON):**
+<img width="1919" height="1079" alt="Screenshot 2026-10-29 000413" src="https://github.com/user-attachments/assets/6b67d237-ac55-40fb-8d04-e908419f5dca" />
 
-```json
-{
-  "nama_sampah": "Minyak Jelantah",
-  "deskripsi": "Minyak goreng bekas yang dapat didaur ulang",
-  "harga_per_kg": 3000
-}
-```
 
-### Memperbarui Jenis Sampah
+### 2. GET Jenis Sampah Berdasarkan ID
 
-**Method:** `PUT`
+Menampilkan data berdasarkan ID tertentu.
 
-**URL:** `/api/jenis-sampah/1`
+<img width="1919" height="1079" alt="Screenshot 2026-10-28 232629" src="https://github.com/user-attachments/assets/d156761d-cd95-4c0a-b3b2-239d3461ac00" />
 
-**Body (JSON):**
 
-```json
-{
-  "nama_sampah": "Plastik",
-  "deskripsi": "Sampah plastik yang dapat didaur ulang",
-  "harga_per_kg": 2500
-}
-```
+### 3. GET Jenis Sampah Berdasarkan Nama
 
-Sesuaikan ID dengan data yang tersedia di database.
+Mencari data berdasarkan nama jenis sampah.
 
-## Pengujian API
+<img width="1919" height="1079" alt="Screenshot 2026-10-28 232805" src="https://github.com/user-attachments/assets/ec912d22-98fe-4d30-b038-6de81f4a571a" />
 
-Pengujian endpoint dilakukan menggunakan Postman, meliputi:
 
-1. GET semua jenis sampah.
-2. GET jenis sampah berdasarkan ID.
-3. GET jenis sampah berdasarkan nama.
-4. POST untuk menambahkan jenis sampah.
-5. PUT untuk memperbarui jenis sampah.
-6. DELETE untuk menghapus jenis sampah.
+### 4. POST Menambahkan Jenis Sampah
+
+Menambahkan data jenis sampah baru ke database.
+
+<img width="1917" height="1079" alt="Screenshot 2026-10-28 232954" src="https://github.com/user-attachments/assets/8501d83e-ce5e-4a95-bd8d-224e3cd1e648" />
+
+
+### 5. PUT Memperbarui Jenis Sampah
+
+Memperbarui data jenis sampah berdasarkan ID.
+
+<img width="1919" height="1079" alt="Screenshot 2026-10-28 233111" src="https://github.com/user-attachments/assets/c82b511b-f920-454c-9624-39b58c0075ab" />
+
+
+### 6. DELETE Menghapus Jenis Sampah
+
+Menghapus data jenis sampah berdasarkan ID.
+
+<img width="1919" height="1079" alt="Screenshot 2026-10-28 233215" src="https://github.com/user-attachments/assets/825d2315-f5ce-48a6-b46a-aa084d1cbb12" />
 
 ## Database
 
-Database menggunakan satu tabel utama, yaitu `jenis_sampah`, dengan kolom:
+Proyek ini menggunakan satu tabel utama, yaitu `jenis_sampah`, dengan kolom:
 
 - `id`
 - `nama_sampah`
@@ -157,7 +150,12 @@ Database menggunakan satu tabel utama, yaitu `jenis_sampah`, dengan kolom:
 - `created_at`
 - `updated_at`
 
+## Diagram Database
+
+Diagram database dibuat menggunakan dbdiagram.io.
+
+**Link diagram:** : https://dbdiagram.io/d/Jenis-Sampah-6ae22580aac33014104a1d54
+
 ## Tujuan Proyek
 
-Proyek ini dibuat untuk memenuhi latihan Backend Development mengenai perancangan database PostgreSQL dan implementasi REST API menggunakan Express.js.
-
+Proyek ini dibuat untuk memenuhi tugas Backend Development mengenai pembuatan database PostgreSQL dan implementasi REST API menggunakan Express.js.
